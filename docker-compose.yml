@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: school
+      POSTGRES_PASSWORD: school
+    volumes:
+      - school_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgresql://school:school@db:5432/school
+
+volumes:
+  school_data:
