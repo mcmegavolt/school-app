@@ -1,2 +1,23 @@
 <div id="<%= dom_id student %>">
+  <p>
+    <strong>Name:</strong>
+    <%= student.name %>
+  </p>
+  <% if student.sections.any? %>
+    <p>
+      <strong>Sections:</strong>
+      <% student.sections.each do |section| %>
+        <div class="section">
+          <p>
+            <%= section.subject.name %>,
+            <%= section.classroom.name %>,
+            <%= section.teacher.name %> |
+            <%= section.start_time.strftime('%H:%M') %> &ndash;
+            <%= section.end_time.strftime('%H:%M') %> |
+            <%= section.fetch_days_of_week.join(', ') %>
+          </p>
+        </div>
+      <% end %>    
+    </p>
+  <% end %>
 </div>

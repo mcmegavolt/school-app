@@ -18,11 +18,11 @@ class Section < ApplicationRecord
   validates :end_time, presence: true
   validate :validate_time_range
 
-  def days_of_week=(days)
+  def assign_days_of_week=(days)
     self[:days_of_week] = days.map { |day| DAYS_OF_WEEK[day.to_sym] }
   end
 
-  def days_of_week
+  def fetch_days_of_week
     self[:days_of_week]&.map { |day| DAYS_OF_WEEK.key(day) }
   end
 

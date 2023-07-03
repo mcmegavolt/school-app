@@ -15,7 +15,18 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
+  <hr />
+  <div>
+    <%= form.label :sections, 'Sections' %><br>
+    <% Section.all.each do |section| %>
+      <%= form.check_box :section_ids, { multiple: true }, section.id, nil %>
+      <%= section.start_time.strftime("%H:%M") %> -
+      <%= section.end_time.strftime("%H:%M") %> /
+      <%= section.days_of_week.join(', ') %>
+      <br>
+    <% end %>
+  </div>
+  <hr />
   <div>
     <%= form.submit %>
   </div>

@@ -6,7 +6,7 @@
   <% @classrooms.each do |classroom| %>
     <%= render classroom %>
     <p>
-      <%= link_to classroom.name, classroom %>
+      <%= link_to "Edit", edit_classroom_path(classroom) %>
     </p>
   <% end %>
 </div>

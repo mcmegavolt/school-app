@@ -6,8 +6,9 @@
   <% @students.each do |student| %>
     <%= render student %>
     <p>
-      <%= link_to student.name, student %>
+      <%= link_to "Edit", edit_student_path(student) %>
     </p>
+    <hr />
   <% end %>
 </div>
 

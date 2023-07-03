@@ -6,7 +6,7 @@
   <% @sections.each do |section| %>
     <%= render section %>
     <p>
-      <%= link_to "Show this section", section %>
+      <%= link_to "Edit", edit_section_path(section) %>
     </p>
     <hr />
   <% end %>

@@ -6,8 +6,9 @@
   <% @subjects.each do |subject| %>
     <%= render subject %>
     <p>
-      <%= link_to subject.name, subject %>
+      <%= link_to "Edit", edit_subject_path(subject) %>
     </p>
+    <hr />
   <% end %>
 </div>
 

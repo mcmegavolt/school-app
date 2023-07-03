@@ -27,8 +27,8 @@
   </div>
 
   <div>
-    <%= form.label :days_of_week, 'Days of week' %>
-    <%= form.select :days_of_week, options_for_select(DAYS_OF_WEEK.map { |key, _value| [key.capitalize.to_s, key] }, selected: @section.days_of_week), {include_hidden: false}, { multiple: true } %>  
+    <%= form.label :assign_days_of_week, 'Days of week' %>
+    <%= form.select :assign_days_of_week, options_for_select(DAYS_OF_WEEK.map { |key, _value| [key.capitalize.to_s, key] }, selected: @section.fetch_days_of_week), {include_hidden: false}, { multiple: true } %>  
   </div>
 
   <div>
