@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Section < ApplicationRecord
   belongs_to :teacher
   belongs_to :subject
@@ -5,9 +7,9 @@ class Section < ApplicationRecord
   has_and_belongs_to_many :students
 
   DURATIONS = [50, 80].freeze
-  EARLIEST_TIME = '7:30AM'.freeze
-  LATEST_TIME = '22:00PM'.freeze
-  DEFAULT_DATE = '2000-01-01'.freeze
+  EARLIEST_TIME = '7:30AM'
+  LATEST_TIME = '22:00PM'
+  DEFAULT_DATE = '2000-01-01'
   TIME_RANGE_ALLOWED = Time.parse("#{DEFAULT_DATE} #{EARLIEST_TIME}")..Time.parse("#{DEFAULT_DATE} #{LATEST_TIME}")
 
   before_validation :set_end_time
@@ -27,16 +29,16 @@ class Section < ApplicationRecord
   end
 
   def set_end_time
-    if start_time.present? && duration.present?
-      self.end_time = start_time + duration.minutes
-    end
+    return unless start_time.present? && duration.present?
+
+    self.end_time = start_time + duration.minutes
   end
 
   def validate_time_range
     return if start_time.blank? || end_time.blank?
 
-    unless TIME_RANGE_ALLOWED.cover?(start_time) && TIME_RANGE_ALLOWED.cover?(end_time)
-      errors.add(:base, 'Time range is outside the allowed range')
-    end
+    return if TIME_RANGE_ALLOWED.cover?(start_time) && TIME_RANGE_ALLOWED.cover?(end_time)
+
+    errors.add(:base, 'Time range is outside the allowed range')
   end
 end
