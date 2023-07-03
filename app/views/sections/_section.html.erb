@@ -1,0 +1,36 @@
+<div id="<%= dom_id section %>">
+  <p>
+    <strong>Teacher:</strong>
+    <%= section.teacher.name %>
+  </p>
+
+  <p>
+    <strong>Subject:</strong>
+    <%= section.subject.name %>
+  </p>
+
+  <p>
+    <strong>Classroom:</strong>
+    <%= section.classroom.name %>
+  </p>
+
+  <p>
+    <strong>Days of week:</strong>
+    <%= section.days_of_week.join(', ') %>
+  </p>
+
+  <p>
+    <strong>Duration:</strong>
+    <%= section.duration %> minutes
+  </p>
+
+  <p>
+    <strong>Start time:</strong>
+    <%= section.start_time.strftime("%H:%M") %>
+  </p>
+
+  <p>
+    <strong>End time:</strong>
+    <%= section.end_time.strftime("%H:%M") %>
+  </p>
+</div>

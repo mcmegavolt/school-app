@@ -1,0 +1,47 @@
+<%= form_with(model: section) do |form| %>
+  <% if section.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h2>
+
+      <ul>
+        <% section.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :teacher_id, 'Teacher' %>
+    <%= form.collection_select :teacher_id, Teacher.all, :id, :name, prompt: true %> 
+  </div>
+
+  <div>
+    <%= form.label :subject_id, 'Subject' %>
+    <%= form.collection_select :subject_id, Subject.all, :id, :name, prompt: true %> 
+  </div>
+
+  <div>
+    <%= form.label :classroom_id, 'Classroom' %>
+    <%= form.collection_select :classroom_id, Classroom.all, :id, :name, prompt: true %>
+  </div>
+
+  <div>
+    <%= form.label :days_of_week, 'Days of week' %>
+    <%= form.select :days_of_week, options_for_select(DAYS_OF_WEEK.map { |key, _value| [key.capitalize.to_s, key] }, selected: @section.days_of_week), {include_hidden: false}, { multiple: true } %>  
+  </div>
+
+  <div>
+    <%= form.label :start_time, style: "display: block" %>
+    <%= form.time_field :start_time %>
+  </div>
+
+  <div>
+    <%= form.label :duration, 'Duration' %>
+    <%= form.collection_select :duration, [50, 80], :itself, :itself %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

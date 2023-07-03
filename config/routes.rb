@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :sections
+  resources :classrooms
+  resources :subjects
+  resources :teachers
+  resources :students
+  
+  root "students#index"
 end

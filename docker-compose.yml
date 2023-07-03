@@ -12,8 +12,39 @@ services:
 
   web:
     build: .
+    command: bundle exec rails server -p 3000 -b '0.0.0.0'
     ports:
       - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgresql://school:school@db:5432/school
+
+  migrate:
+    build: .
+    command: bundle exec rails db:migrate
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgresql://school:school@db:5432/school
+
+  seed:
+    build: .
+    command: bundle exec rails db:seed
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgresql://school:school@db:5432/school
+
+  console:
+    build: .
+    command: bundle exec rails console
     depends_on:
       - db
     volumes:
