@@ -21,7 +21,7 @@ Section.create(
   teacher: teacher1,
   subject: subject1,
   classroom: classroom1,
-  days_of_week: %i[monday wednesday friday],
+  assign_days_of_week: %i[monday wednesday friday],
   start_time: Time.parse('08:00AM'),
   duration: 80
 )
@@ -30,7 +30,7 @@ Section.create(
   teacher: teacher2,
   subject: subject2,
   classroom: classroom2,
-  days_of_week: %i[tuesday thursday],
+  assign_days_of_week: %i[tuesday thursday],
   start_time: Time.parse('02:00PM'),
   duration: 50
 )
@@ -39,7 +39,7 @@ Section.create(
   teacher: teacher2,
   subject: subject2,
   classroom: classroom2,
-  days_of_week: [:wednesday],
+  assign_days_of_week: [:wednesday],
   start_time: Time.parse('09:00AM'),
   duration: 80
 )
